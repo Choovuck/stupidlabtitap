@@ -162,6 +162,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Model\populate.sql" />
     <Content Include="Model\UniverModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>UniverModel.edmx</DependentUpon>
