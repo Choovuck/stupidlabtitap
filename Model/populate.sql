@@ -1,0 +1,76 @@
+SET IDENTITY_INSERT [dbo].[Alternatives] ON
+INSERT INTO [dbo].[Alternatives] ([ANum], [AName]) VALUES (1, N'Piotr')
+INSERT INTO [dbo].[Alternatives] ([ANum], [AName]) VALUES (2, N'Alexei')
+INSERT INTO [dbo].[Alternatives] ([ANum], [AName]) VALUES (3, N'Daniil')
+INSERT INTO [dbo].[Alternatives] ([ANum], [AName]) VALUES (4, N'Alexandr')
+INSERT INTO [dbo].[Alternatives] ([ANum], [AName]) VALUES (5, N'Dimitry')
+SET IDENTITY_INSERT [dbo].[Alternatives] OFF
+
+SET IDENTITY_INSERT [dbo].[Criteria] ON
+INSERT INTO [dbo].[Criteria] ([CNum], [CName], [CRange], [CWeight], [CType], [OptimType], [EdIzmer], [ScaleType]) VALUES (1, N'Look', 0, 7, N'качественный', N'максимум', N'балл', N'бальная')
+INSERT INTO [dbo].[Criteria] ([CNum], [CName], [CRange], [CWeight], [CType], [OptimType], [EdIzmer], [ScaleType]) VALUES (2, N'Talent', 0, 5, N'качественный', N'максимум', N'балл', N'бальная')
+INSERT INTO [dbo].[Criteria] ([CNum], [CName], [CRange], [CWeight], [CType], [OptimType], [EdIzmer], [ScaleType]) VALUES (3, N'Humour', 0, 5, N'качественный', N'максимум', N'балл', N'бальная')
+INSERT INTO [dbo].[Criteria] ([CNum], [CName], [CRange], [CWeight], [CType], [OptimType], [EdIzmer], [ScaleType]) VALUES (4, N'Grades', 0, 10, N'качественный', N'максимум', N'балл', N'бальная')
+INSERT INTO [dbo].[Criteria] ([CNum], [CName], [CRange], [CWeight], [CType], [OptimType], [EdIzmer], [ScaleType]) VALUES (5, N'Sport', 0, 4, N'качественный', N'максимум', N'балл', N'бальная')
+SET IDENTITY_INSERT [dbo].[Criteria] OFF
+
+SET IDENTITY_INSERT [dbo].[LPRs] ON
+INSERT INTO [dbo].[LPRs] ([LNum], [LName], [LRange]) VALUES (1, N'Vasya', 10)
+INSERT INTO [dbo].[LPRs] ([LNum], [LName], [LRange]) VALUES (2, N'Kolya', 7)
+SET IDENTITY_INSERT [dbo].[LPRs] OFF
+
+SET IDENTITY_INSERT [dbo].[Marks] ON
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (1, 1, N'Disastrous', 0, 1, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (2, 1, N'Cringy', 0, 2, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (3, 1, N'Decent', 0, 3, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (4, 1, N'Nice', 0, 4, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (5, 1, N'Perfect', 0, 5, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (6, 2, N'Negative', 0, 1, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (7, 2, N'Bad', 0, 2, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (8, 2, N'Decent', 0, 3, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (9, 2, N'Cool', 0, 4, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (10, 2, N'Amazing', 0, 5, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (11, 3, N'Cringy', 0, 1, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (12, 3, N'Boring', 0, 2, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (13, 3, N'Funny', 0, 3, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (14, 3, N'Pro', 0, 4, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (15, 3, N'Outstanding', 0, 5, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (16, 4, N'Sto0ped', 0, 1, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (17, 4, N'Bad', 0, 2, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (18, 4, N'OK', 0, 3, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (19, 4, N'Smart', 0, 4, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (20, 4, N'Prodigy', 0, 5, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (21, 5, N'Miserable', 0, 1, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (22, 5, N'Fine', 0, 2, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (23, 5, N'Average', 0, 3, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (24, 5, N'Pro', 0, 4, 0)
+INSERT INTO [dbo].[Marks] ([MNum], [CNum], [MName], [MRange], [NumMark], [NormMark]) VALUES (25, 5, N'Superstar', 0, 5, 0)
+SET IDENTITY_INSERT [dbo].[Marks] OFF
+
+SET IDENTITY_INSERT [dbo].[Vectors] ON
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (1, 1, 2)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (2, 1, 9)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (3, 1, 12)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (4, 1, 16)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (5, 1, 25)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (6, 2, 4)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (7, 2, 7)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (8, 2, 11)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (9, 2, 19)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (10, 2, 22)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (11, 3, 1)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (12, 3, 10)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (13, 3, 12)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (14, 3, 20)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (15, 3, 21)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (16, 4, 5)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (17, 4, 8)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (18, 4, 13)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (19, 4, 18)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (20, 4, 23)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (21, 5, 3)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (22, 5, 6)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (23, 5, 15)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (24, 5, 17)
+INSERT INTO [dbo].[Vectors] ([VNum], [ANum], [MNum]) VALUES (25, 5, 24)
+SET IDENTITY_INSERT [dbo].[Vectors] OFF

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="470aee7785a64902910495a0c17024e5" Name="Diagram1">
+        <EntityTypeShape EntityType="UniverModel.Alternative" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniverModel.Criterion" Width="1.5" PointX="1.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniverModel.LPR" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniverModel.Mark" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniverModel.Result" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniverModel.Vector" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="UniverModel.FK_Result_Alternative" ManuallyRouted="false" />
+        <AssociationConnector Association="UniverModel.FK_Vector_Alternative" ManuallyRouted="false" />
+        <AssociationConnector Association="UniverModel.FK_Mark_Criterion" ManuallyRouted="false" />
+        <AssociationConnector Association="UniverModel.FK_Result_LPR" ManuallyRouted="false" />
+        <AssociationConnector Association="UniverModel.FK_Vector_Mark" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

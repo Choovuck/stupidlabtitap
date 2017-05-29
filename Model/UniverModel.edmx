@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UniverModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="UniverModelStoreContainer">
+    <EntitySet Name="Alternatives" EntityType="UniverModel.Store.Alternatives" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Criteria" EntityType="UniverModel.Store.Criteria" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LPRs" EntityType="UniverModel.Store.LPRs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Marks" EntityType="UniverModel.Store.Marks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Results" EntityType="UniverModel.Store.Results" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vectors" EntityType="UniverModel.Store.Vectors" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Result_Alternative" Association="UniverModel.Store.FK_Result_Alternative">
+      <End Role="Alternative" EntitySet="Alternatives" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vector_Alternative" Association="UniverModel.Store.FK_Vector_Alternative">
+      <End Role="Alternative" EntitySet="Alternatives" />
+      <End Role="Vector" EntitySet="Vectors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mark_Criterion" Association="UniverModel.Store.FK_Mark_Criterion">
+      <End Role="Criterion" EntitySet="Criteria" />
+      <End Role="Mark" EntitySet="Marks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Result_LPR" Association="UniverModel.Store.FK_Result_LPR">
+      <End Role="LPR" EntitySet="LPRs" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vector_Mark" Association="UniverModel.Store.FK_Vector_Mark">
+      <End Role="Mark" EntitySet="Marks" />
+      <End Role="Vector" EntitySet="Vectors" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Alternatives">
+    <Key>
+      <PropertyRef Name="ANum" />
+    </Key>
+    <Property Name="ANum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Criteria">
+    <Key>
+      <PropertyRef Name="CNum" />
+    </Key>
+    <Property Name="CNum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CRange" Type="int" Nullable="false" />
+    <Property Name="CWeight" Type="int" Nullable="false" />
+    <Property Name="CType" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="OptimType" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="EdIzmer" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ScaleType" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="LPRs">
+    <Key>
+      <PropertyRef Name="LNum" />
+    </Key>
+    <Property Name="LNum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LRange" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Marks">
+    <Key>
+      <PropertyRef Name="MNum" />
+    </Key>
+    <Property Name="MNum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CNum" Type="int" Nullable="false" />
+    <Property Name="MName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MRange" Type="int" Nullable="false" />
+    <Property Name="NumMark" Type="int" Nullable="false" />
+    <Property Name="NormMark" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Results">
+    <Key>
+      <PropertyRef Name="RNum" />
+    </Key>
+    <Property Name="RNum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LNum" Type="int" Nullable="false" />
+    <Property Name="ANum" Type="int" Nullable="false" />
+    <Property Name="Range" Type="int" Nullable="false" />
+    <Property Name="AWeight" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vectors">
+    <Key>
+      <PropertyRef Name="VNum" />
+    </Key>
+    <Property Name="VNum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ANum" Type="int" Nullable="false" />
+    <Property Name="MNum" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Result_Alternative">
+    <End Role="Alternative" Type="UniverModel.Store.Alternatives" Multiplicity="1" />
+    <End Role="Result" Type="UniverModel.Store.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alternative">
+        <PropertyRef Name="ANum" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="ANum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vector_Alternative">
+    <End Role="Alternative" Type="UniverModel.Store.Alternatives" Multiplicity="1" />
+    <End Role="Vector" Type="UniverModel.Store.Vectors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alternative">
+        <PropertyRef Name="ANum" />
+      </Principal>
+      <Dependent Role="Vector">
+        <PropertyRef Name="ANum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mark_Criterion">
+    <End Role="Criterion" Type="UniverModel.Store.Criteria" Multiplicity="1" />
+    <End Role="Mark" Type="UniverModel.Store.Marks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Criterion">
+        <PropertyRef Name="CNum" />
+      </Principal>
+      <Dependent Role="Mark">
+        <PropertyRef Name="CNum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Result_LPR">
+    <End Role="LPR" Type="UniverModel.Store.LPRs" Multiplicity="1" />
+    <End Role="Result" Type="UniverModel.Store.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LPR">
+        <PropertyRef Name="LNum" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="LNum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vector_Mark">
+    <End Role="Mark" Type="UniverModel.Store.Marks" Multiplicity="1" />
+    <End Role="Vector" Type="UniverModel.Store.Vectors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mark">
+        <PropertyRef Name="MNum" />
+      </Principal>
+      <Dependent Role="Vector">
+        <PropertyRef Name="MNum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UniverModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Alternative">
+          <Key>
+            <PropertyRef Name="ANum" />
+          </Key>
+          <Property Name="ANum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Results" Relationship="Self.FK_Result_Alternative" FromRole="Alternative" ToRole="Result" />
+          <NavigationProperty Name="Vectors" Relationship="Self.FK_Vector_Alternative" FromRole="Alternative" ToRole="Vector" />
+        </EntityType>
+        <EntityType Name="Criterion">
+          <Key>
+            <PropertyRef Name="CNum" />
+          </Key>
+          <Property Name="CNum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CRange" Type="Int32" Nullable="false" />
+          <Property Name="CWeight" Type="Int32" Nullable="false" />
+          <Property Name="CType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OptimType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EdIzmer" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ScaleType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Marks" Relationship="Self.FK_Mark_Criterion" FromRole="Criterion" ToRole="Mark" />
+        </EntityType>
+        <EntityType Name="LPR">
+          <Key>
+            <PropertyRef Name="LNum" />
+          </Key>
+          <Property Name="LNum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LRange" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Results" Relationship="Self.FK_Result_LPR" FromRole="LPR" ToRole="Result" />
+        </EntityType>
+        <EntityType Name="Mark">
+          <Key>
+            <PropertyRef Name="MNum" />
+          </Key>
+          <Property Name="MNum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CNum" Type="Int32" Nullable="false" />
+          <Property Name="MName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MRange" Type="Int32" Nullable="false" />
+          <Property Name="NumMark" Type="Int32" Nullable="false" />
+          <Property Name="NormMark" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Criterion" Relationship="Self.FK_Mark_Criterion" FromRole="Mark" ToRole="Criterion" />
+          <NavigationProperty Name="Vectors" Relationship="Self.FK_Vector_Mark" FromRole="Mark" ToRole="Vector" />
+        </EntityType>
+        <EntityType Name="Result">
+          <Key>
+            <PropertyRef Name="RNum" />
+          </Key>
+          <Property Name="RNum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LNum" Type="Int32" Nullable="false" />
+          <Property Name="ANum" Type="Int32" Nullable="false" />
+          <Property Name="Range" Type="Int32" Nullable="false" />
+          <Property Name="AWeight" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Alternative" Relationship="Self.FK_Result_Alternative" FromRole="Result" ToRole="Alternative" />
+          <NavigationProperty Name="LPR" Relationship="Self.FK_Result_LPR" FromRole="Result" ToRole="LPR" />
+        </EntityType>
+        <EntityType Name="Vector">
+          <Key>
+            <PropertyRef Name="VNum" />
+          </Key>
+          <Property Name="VNum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ANum" Type="Int32" Nullable="false" />
+          <Property Name="MNum" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Alternative" Relationship="Self.FK_Vector_Alternative" FromRole="Vector" ToRole="Alternative" />
+          <NavigationProperty Name="Mark" Relationship="Self.FK_Vector_Mark" FromRole="Vector" ToRole="Mark" />
+        </EntityType>
+        <Association Name="FK_Result_Alternative">
+          <End Role="Alternative" Type="Self.Alternative" Multiplicity="1" />
+          <End Role="Result" Type="Self.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alternative">
+              <PropertyRef Name="ANum" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="ANum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vector_Alternative">
+          <End Role="Alternative" Type="Self.Alternative" Multiplicity="1" />
+          <End Role="Vector" Type="Self.Vector" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alternative">
+              <PropertyRef Name="ANum" />
+            </Principal>
+            <Dependent Role="Vector">
+              <PropertyRef Name="ANum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mark_Criterion">
+          <End Role="Criterion" Type="Self.Criterion" Multiplicity="1" />
+          <End Role="Mark" Type="Self.Mark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Criterion">
+              <PropertyRef Name="CNum" />
+            </Principal>
+            <Dependent Role="Mark">
+              <PropertyRef Name="CNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_LPR">
+          <End Role="LPR" Type="Self.LPR" Multiplicity="1" />
+          <End Role="Result" Type="Self.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LPR">
+              <PropertyRef Name="LNum" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="LNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vector_Mark">
+          <End Role="Mark" Type="Self.Mark" Multiplicity="1" />
+          <End Role="Vector" Type="Self.Vector" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mark">
+              <PropertyRef Name="MNum" />
+            </Principal>
+            <Dependent Role="Vector">
+              <PropertyRef Name="MNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UniverEntities" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="Alternatives" EntityType="Self.Alternative" />
+          <EntitySet Name="Criteria" EntityType="Self.Criterion" />
+          <EntitySet Name="LPRs" EntityType="Self.LPR" />
+          <EntitySet Name="Marks" EntityType="Self.Mark" />
+          <EntitySet Name="Results" EntityType="Self.Result" />
+          <EntitySet Name="Vectors" EntityType="Self.Vector" />
+          <AssociationSet Name="FK_Result_Alternative" Association="Self.FK_Result_Alternative">
+            <End Role="Alternative" EntitySet="Alternatives" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vector_Alternative" Association="Self.FK_Vector_Alternative">
+            <End Role="Alternative" EntitySet="Alternatives" />
+            <End Role="Vector" EntitySet="Vectors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mark_Criterion" Association="Self.FK_Mark_Criterion">
+            <End Role="Criterion" EntitySet="Criteria" />
+            <End Role="Mark" EntitySet="Marks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_LPR" Association="Self.FK_Result_LPR">
+            <End Role="LPR" EntitySet="LPRs" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vector_Mark" Association="Self.FK_Vector_Mark">
+            <End Role="Mark" EntitySet="Marks" />
+            <End Role="Vector" EntitySet="Vectors" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UniverModelStoreContainer" CdmEntityContainer="UniverEntities">
+    <EntitySetMapping Name="Alternatives">
+      <EntityTypeMapping TypeName="IsTypeOf(UniverModel.Alternative)">
+        <MappingFragment StoreEntitySet="Alternatives">
+          <ScalarProperty Name="ANum" ColumnName="ANum" />
+          <ScalarProperty Name="AName" ColumnName="AName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Criteria">
+      <EntityTypeMapping TypeName="IsTypeOf(UniverModel.Criterion)">
+        <MappingFragment StoreEntitySet="Criteria">
+          <ScalarProperty Name="CNum" ColumnName="CNum" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+          <ScalarProperty Name="CRange" ColumnName="CRange" />
+          <ScalarProperty Name="CWeight" ColumnName="CWeight" />
+          <ScalarProperty Name="CType" ColumnName="CType" />
+          <ScalarProperty Name="OptimType" ColumnName="OptimType" />
+          <ScalarProperty Name="EdIzmer" ColumnName="EdIzmer" />
+          <ScalarProperty Name="ScaleType" ColumnName="ScaleType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LPRs">
+      <EntityTypeMapping TypeName="IsTypeOf(UniverModel.LPR)">
+        <MappingFragment StoreEntitySet="LPRs">
+          <ScalarProperty Name="LNum" ColumnName="LNum" />
+          <ScalarProperty Name="LName" ColumnName="LName" />
+          <ScalarProperty Name="LRange" ColumnName="LRange" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marks">
+      <EntityTypeMapping TypeName="IsTypeOf(UniverModel.Mark)">
+        <MappingFragment StoreEntitySet="Marks">
+          <ScalarProperty Name="MNum" ColumnName="MNum" />
+          <ScalarProperty Name="CNum" ColumnName="CNum" />
+          <ScalarProperty Name="MName" ColumnName="MName" />
+          <ScalarProperty Name="MRange" ColumnName="MRange" />
+          <ScalarProperty Name="NumMark" ColumnName="NumMark" />
+          <ScalarProperty Name="NormMark" ColumnName="NormMark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Results">
+      <EntityTypeMapping TypeName="IsTypeOf(UniverModel.Result)">
+        <MappingFragment StoreEntitySet="Results">
+          <ScalarProperty Name="RNum" ColumnName="RNum" />
+          <ScalarProperty Name="LNum" ColumnName="LNum" />
+          <ScalarProperty Name="ANum" ColumnName="ANum" />
+          <ScalarProperty Name="Range" ColumnName="Range" />
+          <ScalarProperty Name="AWeight" ColumnName="AWeight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vectors">
+      <EntityTypeMapping TypeName="IsTypeOf(UniverModel.Vector)">
+        <MappingFragment StoreEntitySet="Vectors">
+          <ScalarProperty Name="VNum" ColumnName="VNum" />
+          <ScalarProperty Name="ANum" ColumnName="ANum" />
+          <ScalarProperty Name="MNum" ColumnName="MNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
