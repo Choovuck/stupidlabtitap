@@ -18,6 +18,11 @@ namespace TILab1WPF
 
         public void MakeDecision()
         {
+            _context.Results.AddRange(GetSortedDecisions());
+        }
+
+        public IEnumerable<Result> GetSortedDecisions()
+        {
             var result = new List<KeyValuePair<Result, float>>();
 
             var criteriaToMulriplier = new Dictionary<Criterion, float>();
@@ -31,7 +36,7 @@ namespace TILab1WPF
 
             foreach (var a in _context.Alternatives)
             {
-                var vectors = _context.Vectors.Where(v => v.Alternative == a).ToList();
+                var vectors = _context.Vectors.Where(v => v.Alternative.AName == a.AName).ToList();
 
                 float ranking = 0.0f;
                 foreach (var v in vectors)
@@ -40,13 +45,14 @@ namespace TILab1WPF
                 var res = new Result();
                 res.Alternative = a;
                 res.LNum = 0;
-                
+
 
                 result.Add(new KeyValuePair<Result, float>(res, ranking));
             }
 
             var sortedResults = result.OrderBy(r => r.Value).Select(pair => pair.Key).ToList();
-            _context.Results.AddRange(sortedResults);
+
+            return sortedResults;
         }
     }
 }

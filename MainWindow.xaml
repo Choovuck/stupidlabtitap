@@ -765,7 +765,9 @@
           </Grid>
         </Grid>
       </TabItem>
-      <TabItem Header="Result"/>
+      <TabItem Header="Result">
+        <Button x:Name="button" Content="CALCULATE THE BEST BOY" HorizontalAlignment="Left" VerticalAlignment="Top" Width="201" Margin="215,139,0,0" Height="190" Click="OnCalculate"/>
+      </TabItem>
     </TabControl>
   </Grid>
 </Window>

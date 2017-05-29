@@ -24,7 +24,7 @@ namespace TILab1WPF
         private LabViewModel _viewModel;
         public MainWindow()
         {
-                InitializeComponent();
+            InitializeComponent();
             try
             {
             _viewModel = new LabViewModel(new UniverEntities());
@@ -217,6 +217,15 @@ namespace TILab1WPF
             _viewModel.NewVector.VNum = newVector.VNum;
             _viewModel.Vectors.Add(_viewModel.NewVector);
             _viewModel.NewVector = new VectorViewModel();
+        }
+
+        private void OnCalculate(object sender, RoutedEventArgs e)
+        {
+            var gachiThinker = new DecisionMaker(_viewModel.Context);
+            var results = gachiThinker.GetSortedDecisions();
+            var theBestBoyNextDoor = results.First();
+
+            (sender as Button).Content = "Our Winner is : " + theBestBoyNextDoor.Alternative.AName;
         }
     }
 }
