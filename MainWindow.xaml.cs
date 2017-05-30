@@ -40,6 +40,8 @@ namespace TILab1WPF
             mBox.ItemsSource = _viewModel.Marks;
             LPRSelect.DataContext = _viewModel;
             LPRSelect.SelectedIndex = 0;
+            _rankings = new Dictionary<LPRViewModel, List<AlternativeViewModel>>();
+              UpdateNotVoted();
         }
 
         private void OnBeginEdit(object sender, RoutedEventArgs e)
@@ -232,6 +234,24 @@ namespace TILab1WPF
                 concated += r.Alternative.AName + "\r\n";
 
             textBox.Text = concated;
+        }
+
+
+        private Dictionary<LPRViewModel, List<AlternativeViewModel>> _rankings;
+        private void Submit_Click(object sender, RoutedEventArgs e)
+        {
+            LPRViewModel SelectedLPR = LPRSelect.SelectedItem as LPRViewModel;
+            _rankings[SelectedLPR] = AlternativesOrder.Items.Cast<AlternativeViewModel>().ToList();
+
+            UpdateNotVoted();
+        }
+
+        private void UpdateNotVoted()
+        {
+            var notvoted = _viewModel.LPRs.Where(lpr => !_rankings.Keys.Contains(lpr));
+            var names = notvoted.Select(lpr => lpr.LName);
+            var str = names.Count() > 0 ? names.Aggregate((x, y) => x + ", " + y) : "";
+            notVotedText.Text = str;
         }
     }
 }

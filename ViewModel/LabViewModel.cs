@@ -27,6 +27,8 @@ namespace TILab1WPF.ViewModel
 
         public ObservableCollection<ResultViewModel> Results { get; set; }
 
+        public MultipleLPRViewModel MultipleLPRViewModel { get; set; }
+
         public AlternativeViewModel NewAlternative
         {
             get { return _newAlternative; }
@@ -121,6 +123,9 @@ namespace TILab1WPF.ViewModel
             NewMark = new MarkViewModel();
             NewVector = new VectorViewModel();
             NewResult = new ResultViewModel();
+
+            MultipleLPRViewModel = new MultipleLPRViewModel();
+            MultipleLPRViewModel.Alternatives = new ObservableCollection<Alternative>(context.Alternatives.ToList());
         }
     }
 }
