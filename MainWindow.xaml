@@ -792,10 +792,15 @@
           <Button x:Name="Submit" Content="Submit" HorizontalAlignment="Left" Margin="53,420,0,0" VerticalAlignment="Top" Width="189" Height="41" Click="Submit_Click"/>
           <TextBox x:Name="notVotedText" HorizontalAlignment="Left" Height="44" Margin="53,487,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="189"/>
           <Label x:Name="label1" Content="Not yet voted:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="3.237,15.731" Margin="67,461,0,0"/>
+
+          <TextBox x:Name="SimpsonResults" HorizontalAlignment="Left" Height="271" TextWrapping="Wrap" Text="Vote now" VerticalAlignment="Top" Width="189" IsReadOnly="True" Margin="688,80,0,0"/>
+          <TextBox x:Name="BordResults" HorizontalAlignment="Left" Height="271" TextWrapping="Wrap" Text="Vote now" VerticalAlignment="Top" Width="193" IsReadOnly="True" Margin="408,80,0,0"/>
+          <Label x:Name="label2" Content="Bord" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="476,49,0,0"/>
+          <Label x:Name="label3" Content="Simpson" HorizontalAlignment="Left" Margin="756,49,0,0" VerticalAlignment="Top"/>
+          <Button x:Name="ClearVotes" Content="Clear votes" Margin="1008,446,62,40" Background="Red" Click="ClearVotes_Click"/>
         </Grid>
       </TabItem>
 
     </TabControl>
-
   </Grid>
 </Window>

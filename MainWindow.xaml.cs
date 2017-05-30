@@ -244,6 +244,7 @@ namespace TILab1WPF
             _rankings[SelectedLPR] = AlternativesOrder.Items.Cast<AlternativeViewModel>().ToList();
 
             UpdateNotVoted();
+            UpdateMultupleLPRResults();
         }
 
         private void UpdateNotVoted()
@@ -252,6 +253,56 @@ namespace TILab1WPF
             var names = notvoted.Select(lpr => lpr.LName);
             var str = names.Count() > 0 ? names.Aggregate((x, y) => x + ", " + y) : "";
             notVotedText.Text = str;
+        }
+
+        private void ClearVotes_Click(object sender, RoutedEventArgs e)
+        {
+            _rankings.Clear();
+            UpdateNotVoted();
+            UpdateMultupleLPRResults();
+        }
+
+        private void UpdateMultupleLPRResults()
+        {
+            if (_rankings.Keys.Count() != _viewModel.LPRs.Count())
+            {
+                BordResults.Text = "Vote now";
+                SimpsonResults.Text = "Vote now";
+
+                return;
+            }
+
+            CalculateBord();
+            CalculateSimpsons();
+        }
+
+        private void CalculateBord()
+        {
+            var scores = new Dictionary<AlternativeViewModel, int>();
+            foreach (var pair in _rankings)
+            {
+                for (int i = 0; i < pair.Value.Count(); ++i)
+                {
+                    var alternative = pair.Value[i];
+                    var score = pair.Value.Count - i - 1;
+
+                    if (!scores.Keys.Contains(alternative))
+                        scores[alternative] = score;
+                    else
+                        scores[alternative] += score;
+                }
+            }
+
+            string result = scores.OrderByDescending(pair => pair.Value)
+                                  .Select(pair => pair.Key.AName + ": " + pair.Value.ToString())
+                                  .Aggregate((x, y) => x + "\r\n" + y);
+
+            BordResults.Text = result;
+        }
+
+        private void CalculateSimpsons()
+        {
+
         }
     }
 }
