@@ -766,8 +766,28 @@
         </Grid>
       </TabItem>
       <TabItem Header="Result">
-        <Button x:Name="button" Content="CALCULATE THE BEST BOY" HorizontalAlignment="Left" VerticalAlignment="Top" Width="201" Margin="215,139,0,0" Height="190" Click="OnCalculate"/>
+        <Grid>
+
+          <Button x:Name="button" Content="Make decision" HorizontalAlignment="Left" VerticalAlignment="Top" Width="201" Margin="51,81,0,0" Height="190" Click="OnCalculate"/>
+          <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="190" TextWrapping="Wrap" Text="PRESS THE BUTTON" VerticalAlignment="Top" Width="210" Margin="349,81,0,0"/>
+        </Grid>
       </TabItem>
+      <TabItem Header="MultipleLPR" IsEnabled="False">
+        <Grid>
+          <ComboBox Name="LPRSelect" ItemsSource="{Binding LPRs}" DisplayMemberPath="LName" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,260,0,260.667" Width="76">
+
+          </ComboBox>
+          <ListView x:Name="listView" HorizontalAlignment="Left" Height="324" VerticalAlignment="Top" Width="139" Margin="212,99,0,0">
+            <ListView.View>
+              <GridView>
+                <GridViewColumn/>
+              </GridView>
+            </ListView.View>
+          </ListView>
+        </Grid>
+      </TabItem>
+
     </TabControl>
+
   </Grid>
 </Window>

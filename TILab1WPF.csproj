@@ -79,6 +79,7 @@
     <Compile Include="ViewModel\LabViewModel.cs" />
     <Compile Include="ViewModel\LPRViewModel.cs" />
     <Compile Include="ViewModel\MarkViewModel.cs" />
+    <Compile Include="ViewModel\MultipleLPRViewModel.cs" />
     <Compile Include="ViewModel\ResultViewModel.cs" />
     <Compile Include="ViewModel\UINotifyPropertyChangedBase.cs" />
     <Compile Include="ViewModel\VectorViewModel.cs" />

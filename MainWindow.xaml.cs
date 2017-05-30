@@ -38,6 +38,8 @@ namespace TILab1WPF
             cBox.ItemsSource = _viewModel.Criterions;
             aBox.ItemsSource = _viewModel.Alternatives;
             mBox.ItemsSource = _viewModel.Marks;
+            LPRSelect.DataContext = _viewModel;
+            LPRSelect.SelectedIndex = 0;
         }
 
         private void OnBeginEdit(object sender, RoutedEventArgs e)
@@ -225,7 +227,11 @@ namespace TILab1WPF
             var results = gachiThinker.GetSortedDecisions();
             var theBestBoyNextDoor = results.First();
 
-            (sender as Button).Content = "Our Winner is : " + theBestBoyNextDoor.Alternative.AName;
+            string concated = "";
+            foreach (var r in results)
+                concated += r.Alternative.AName + "\r\n";
+
+            textBox.Text = concated;
         }
     }
 }
