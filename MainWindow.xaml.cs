@@ -302,7 +302,38 @@ namespace TILab1WPF
 
         private void CalculateSimpsons()
         {
+            var Ns = new Dictionary<KeyValuePair<AlternativeViewModel, AlternativeViewModel>, int>();
 
+            foreach (var a1 in _viewModel.Alternatives)
+                foreach (var a2 in _viewModel.Alternatives)
+                    if (a1.ANum != a2.ANum)
+                        Ns[new KeyValuePair<AlternativeViewModel, AlternativeViewModel>(a1, a2)] = 0;
+            
+            foreach (var pair in _rankings)
+            {
+                var score = pair.Key.LRange;
+                var alternatives = pair.Value;
+
+                for (int i = 0; i < alternatives.Count(); ++i)
+                    for (int j = i+1; j < alternatives.Count(); ++j)
+                    {
+                        var currentN = Ns.First((n => n.Key.Key.ANum == alternatives[i].ANum && n.Key.Value.ANum == alternatives[j].ANum));
+                        Ns[currentN.Key] += score;
+                    }
+            }
+
+            var SimpsonRatings = new Dictionary<AlternativeViewModel, int>();
+
+            foreach (var a in _viewModel.Alternatives)
+                foreach (var pair in Ns)
+                    if (pair.Key.Key == a)
+                        SimpsonRatings[a] = Math.Min(SimpsonRatings.Keys.Contains(a) ? SimpsonRatings[a] : 666, pair.Value);
+
+            string result = SimpsonRatings.OrderByDescending(x => x.Value)
+                                          .Select(pair => pair.Key.AName + ": " + pair.Value)
+                                          .Aggregate((x, y) => x + "\r\n" + y);
+
+            SimpsonResults.Text = result;
         }
     }
 }
